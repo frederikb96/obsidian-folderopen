@@ -1,0 +1,31 @@
+---
+- hosts: all
+  tasks:
+    - name: Ensure applications directory exists
+      file:
+        path: ~/.local/share/applications
+        state: directory
+
+    - name: Copy .desktop file for FolderOpen
+      copy:
+        src: files/folderopen.desktop
+        dest: ~/.local/share/applications/folderopen.desktop
+
+    - name: Ensure MIME packages directory exists
+      file:
+        path: ~/.local/share/mime/packages
+        state: directory
+
+    - name: Copy MIME type XML file
+      copy:
+        src: files/folderopen.xml
+        dest: ~/.local/share/mime/packages/folderopen.xml
+
+    - name: Update MIME database
+      shell: update-mime-database ~/.local/share/mime
+
+    - name: Update desktop database
+      shell: update-desktop-database ~/.local/share/applications
+
+    - name: Register .folderopen file type with FolderOpen application
+      shell: xdg-mime default folderopen.desktop application/x-folderopen

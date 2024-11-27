@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-folderopen">
+        <comment>Obsidian FolderOpen</comment>
+        <glob pattern="*.folderopen"/>
+    </mime-type>
+</mime-info>
